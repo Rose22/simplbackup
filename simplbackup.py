@@ -19,6 +19,25 @@ from datetime import datetime
 
 TMPDIR = "/tmp/simplbackup/"
 
+def create_full_path(target):
+    path_parts = target.split('/')
+    first_folder = path_parts[0]
+
+    # first of all, create the first one if it doesn't exist
+    if not os.path.isdir(first_folder):
+        os.mkdir(first_folder)
+
+    if len(path_parts) <= 1:
+        return
+
+    # then if there's more folders in the path, create em all!
+    pathbuild = first_folder
+
+    for foldername in target.split('/')[1:-1]:
+        pathbuild += '/'+foldername
+        if not os.path.exists(pathbuild):
+            os.mkdir(pathbuild)
+
 if len(sys.argv) <= 1:
     print("please provide an input file")
     sys.exit()
@@ -92,6 +111,7 @@ for map in dirmap:
     if os.path.isdir(source):
         shutil.copytree(source.rstrip('/'), target.rstrip('/'))
     elif os.path.isfile(source):
+        create_full_path(target)
         shutil.copy(source.rstrip('/'), target)
 
 os.chdir(prev_path)
