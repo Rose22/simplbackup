@@ -109,7 +109,7 @@ for map in dirmap:
     print("copy %s => %s" % (source, target))
 
     if os.path.isdir(source):
-        shutil.copytree(source.rstrip('/'), target.rstrip('/'))
+        shutil.copytree(source.rstrip('/'), target.rstrip('/'), dirs_exist_ok=True)
     elif os.path.isfile(source):
         create_full_path(target)
         shutil.copy(source.rstrip('/'), target)
