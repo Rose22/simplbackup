@@ -6,27 +6,34 @@ it works by defining a file like this:
 ```
 emulation_saves.{date}.zip
 
-/home/user/.retroarch/saves/ : emulation/saves/retroarch
-/home/user/.config/dolphin/GC/ : emulation/saves/dolphin/GC
-/home/user/.config/dolphin/Wii/ : emulation/saves/dolphin/Wii
-/home/user/.config/yuzu/nand/user/save : emulation/saves/yuzu
+/home/user/.retroarch/saves/ : saves/retroarch
+/home/user/.config/dolphin/GC/ : saves/dolphin/GC
+/home/user/.config/dolphin/Wii/ : saves/dolphin/Wii
+/home/user/.config/yuzu/nand/user/save : saves/yuzu
 ```
 
 and so on.
 
-you save that as something like "daily_emulation_saves_backup.conf". 
+you save that as something like "emubackup.conf". 
 
-then run `simplbackup daily_emulation_saves_backup.conf`
+then run `simplbackup emubackup.conf`
 
 this results in a file called `emulation_saves.08-08-2023.zip` that has the following file structure in it:
 ```
-emulation/
-  saves/
-    retroarch/
-    dolphin/
-      GC/
-      Wii/
-    yuzu/
+saves/
+  retroarch/
+    ..all the retroarch files..
+  dolphin/
+    GC/
+      USA/
+        Card A/
+          ..all the files..
+      EUR/
+      JAP/
+    Wii/
+      ..all the wii files..
+  yuzu/
+    ..all the yuzu saves..
 ```
 
 with those all containing the files from the source folders stated in the definition file.
