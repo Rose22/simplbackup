@@ -19,7 +19,7 @@ from datetime import datetime
 
 TMPDIR = "/tmp/simplbackup/"
 
-if not sys.argv[1]:
+if len(sys.argv) <= 1:
     print("please provide an input file")
     sys.exit()
 
@@ -73,6 +73,10 @@ for line in dirmap_raw:
     dirmap.append((source, target))
 
     line_num += 1
+
+# if the script somehow left behind it's files, get rid of it
+if os.path.exists(TMPDIR):
+    shutil.rmtree(TMPDIR)
 
 prev_path = os.getcwd()
 if not os.path.exists(TMPDIR):
