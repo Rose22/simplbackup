@@ -41,7 +41,8 @@ if dest_zip.lower().count('.zip') != 1:
 
 # fancy useful replacements in the filename
 replace_map = {
-    '{date}': datetime.today().strftime("%d-%m-%Y")
+    '{date}': datetime.today().strftime("%d-%m-%Y"),
+    '.zip': '' # shutil adds .zip to the filename for some reason. we don't want that!
 }
 for original, replacement in replace_map.items():
     dest_zip = dest_zip.replace(original, replacement)
