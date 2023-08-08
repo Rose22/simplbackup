@@ -93,7 +93,7 @@ for map in dirmap:
 
 os.chdir(prev_path)
 
-print("Compressing into %s.." % dest_zip)
+print("Compressing into %s.zip.." % dest_zip)
 shutil.make_archive(dest_zip, 'zip', TMPDIR)
 
 shutil.rmtree(TMPDIR)
