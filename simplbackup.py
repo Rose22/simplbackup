@@ -77,6 +77,10 @@ dirmap_raw = configlines[2:]
 dirmap = []
 line_num = 1
 for line in dirmap_raw:
+    if line == "\n":
+        line_num += 1
+        continue
+
     if line.count(':') != 1:
         print("error on line %i: mapping should be in the form of \"/source/folder : /target/folder/inside/zip\"" % line_num)
         sys.exit(1)
