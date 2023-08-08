@@ -14,6 +14,10 @@ emulation_saves.{date}.zip
 
 and so on.
 
+you save that as something like "daily_emulation_saves_backup.conf". 
+
+then run `simplbackup daily_emulation_saves_backup.conf`
+
 this results in a file called `emulation_saves.08-08-2023.zip` that has the following file structure in it:
 ```
 emulation/
